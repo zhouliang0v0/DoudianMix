@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情页生成</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app" id="app">
+      <section class="form-page" aria-label="商品详情页生成设置">
+        <div class="content">
+          <div class="field-heading">
+            <label for="imageInput">商品原图</label>
+            <button
+              class="help"
+              type="button"
+              data-tip="请上传同一款产品的清晰原图，最多 6 张。"
+              aria-label="商品原图说明"
+            >
+              ?
+            </button>
+          </div>
+
+          <!-- html-validate-disable-next prefer-native-element -- Container includes removable image buttons; keyboard activation is handled in script.js. -->
+          <div
+            class="upload-zone"
+            id="uploadZone"
+            role="button"
+            tabindex="0"
+            aria-label="上传产品图片"
+          >
+            <div class="upload-empty" id="uploadEmpty">
+              <span class="upload-button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 16V5m0 0L8.5 8.5M12 5l3.5 3.5M5 16.5v1A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-1"
+                  />
+                </svg>
+                上传图片
+              </span>
+              <span class="upload-hint">
+                同一产品，最多 6 张；JPEG/PNG/WebP，每张不超过 10
+                MB。选择后仅保存到本机。
+              </span>
+            </div>
+            <div class="image-grid" id="imageGrid" hidden></div>
+          </div>
+          <input
+            id="imageInput"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+            hidden>
+
+          <div class="section-title-row settings-title">
+            <h2>生成设置</h2>
+            <div class="settings-actions">
+              <a class="model-settings-link" href="results.html">历史任务</a>
+              <a class="model-settings-link" href="settings.html">⚙ 模型设置</a>
+              <button
+                type="button"
+                class="expand-button"
+                id="expandButton"
+                aria-expanded="false"
+                aria-controls="advancedSettings"
+              >
+                展开
+                <span class="chevron"></span>
+              </button>
+            </div>
+          </div>
+          <div class="select-row">
+            <label class="select-wrap">
+              <span class="sr-only">平台</span>
+              <select id="platform">
+                <option>亚马逊</option>
+                <option>淘宝</option>
+                <option>天猫</option>
+                <option>京东</option>
+                <option>独立站</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">目标市场</span>
+              <select id="market">
+                <option>美国</option>
+                <option>英国</option>
+                <option>加拿大</option>
+                <option>德国</option>
+                <option>日本</option>
+                <option>中国</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">语言</span>
+              <select id="language">
+                <option>英文</option>
+                <option>中文</option>
+                <option>德文</option>
+                <option>日文</option>
+              </select>
+            </label>
+          </div>
+          <label class="select-wrap quality-select">
+            <span class="sr-only">生成质量</span>
+            <select id="quality">
+              <option>普通A+</option>
+              <option>高级A+</option>
+              <option>标准详情页</option>
+            </select>
+          </label>
+          <div id="advancedSettings" class="advanced-settings" hidden>
+            <label>
+              画面比例
+              <select id="ratio">
+                <option>自动适配</option>
+                <option>1:1 正方形</option>
+                <option>4:5 竖版</option>
+                <option>16:9 横版</option>
+              </select>
+            </label>
+            <label>
+              视觉风格
+              <select id="style">
+                <option>简洁自然</option>
+                <option>高端质感</option>
+                <option>生活方式</option>
+                <option>科技现代</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="section-title-row selling-title">
+            <div class="field-heading">
+              <label for="sellingPoints">商品卖点&amp;要求</label>
+              <button
+                class="help"
+                type="button"
+                data-tip="填写产品名称、核心卖点、适用人群、期望场景和具体参数。"
+                aria-label="商品卖点说明"
+              >
+                ?
+              </button>
+            </div>
+            <button type="button" class="ai-button" id="aiButton">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M9 18h6m-5 3h4m-2-19a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0 0 12 2Z"
+                />
+                <path d="M9.5 7.5c1.5-1.4 3.5-1.4 5 0" />
+              </svg>
+              AI 帮写
+            </button>
+          </div>
+          <p class="model-status" id="modelStatus">AI 帮写尚未配置模型</p>
+          <p class="model-status" id="sendNotice">
+            点击 AI
+            帮写后，商品原图与填写的资料会发送给所选视觉模型，可能产生费用。
+          </p>
+          <textarea
+            id="sellingPoints"
+            placeholder="1.产品名称&#10;2.核心卖点&#10;3.适用人群&#10;4.期望场景&#10;5.具体参数"
+          ></textarea>
+          <div class="model-status" id="analysisInfo" aria-live="polite"></div>
+
+          <div class="field-heading module-heading">
+            <span>包含模块 (多选)</span>
+            <button
+              class="help"
+              type="button"
+              data-tip="选择需要包含在商品详情页中的内容模块。"
+              aria-label="包含模块说明"
+            >
+              ?
+            </button>
+          </div>
+          <div class="module-grid" id="moduleGrid"></div>
+          <p class="model-status generation-notice" id="generationNotice">
+            生成时会把商品原图与资料发送给视觉模型和生图模型，可能产生费用。
+          </p>
+        </div>
+        <div class="footer">
+          <button type="button" class="generate-button" id="generateButton">
+            请上传产品图
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>生成任务 · 商品详情页</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="results-page">
+      <header class="settings-header">
+        <a href="index.html" aria-label="返回生成页面">←</a>
+        <h1>生成任务</h1>
+        <a class="result-settings" href="settings.html">模型设置</a>
+      </header>
+      <div id="jobList" hidden></div>
+      <section id="jobView" hidden>
+        <div class="result-summary">
+          <h2 id="jobTitle">商品详情页</h2>
+          <p id="jobStatus"></p>
+          <p id="jobMeta"></p>
+          <p id="jobError" role="status"></p>
+          <div class="result-actions">
+            <button id="cancelJob" type="button">取消后续生成</button>
+            <a id="exportJob" href="#" download>下载 ZIP</a>
+            <button id="deleteJob" type="button">删除任务及资产</button>
+          </div>
+        </div>
+        <section class="result-analysis">
+          <h3>商品分析</h3>
+          <p id="analysisFacts"></p>
+          <p id="analysisUnknowns"></p>
+          <div id="originals" class="result-originals"></div>
+        </section>
+        <section>
+          <h3>模块结果</h3>
+          <div id="resultModules"></div>
+        </section>
+      </section>
+      <p id="resultMessage" role="status"></p>
+    </main>
+    <script type="module" src="results.js"></script>
+  </body>
+</html>

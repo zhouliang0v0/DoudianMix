@@ -1,0 +1,13 @@
+{
+  "id": "33333333-3333-4333-8333-333333333333",
+  "createdAt": 1728000000000,
+  "updatedAt": 1728000000123,
+  "status": "generating",
+  "stage": "generating",
+  "legacyExtra": "keep",
+  "modules": [
+    {"id": "hero", "status": "completed", "imageFile": "hero.png", "extra": {"retained": true}},
+    {"id": "details", "status": "running"},
+    {"id": "story", "status": "failed", "error": "Synthetic failure"}
+  ]
+}

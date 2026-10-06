@@ -1,0 +1,94 @@
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "baseUrl": "https://api.openai.com/v1",
+    "model": "gpt-5.2",
+    "docs": "https://platform.openai.com/docs/api-reference/chat/create"
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic / Claude",
+    "baseUrl": "https://api.anthropic.com/v1",
+    "model": "claude-sonnet-4-6",
+    "docs": "https://platform.claude.com/docs/en/api/messages/create",
+    "protocol": "anthropic"
+  },
+  {
+    "id": "gemini",
+    "name": "Google Gemini",
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "model": "gemini-3.8-flash",
+    "docs": "https://ai.google.dev/gemini-api/docs/openai"
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "docs": "https://api-docs.deepseek.com/guides/codex"
+  },
+  {
+    "id": "qwen",
+    "name": "阿里云百炼 / 通义千问",
+    "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus",
+    "docs": "https://help.aliyun.com/en/model-studio/base-url"
+  },
+  {
+    "id": "kimi",
+    "name": "月之暗面 / Kimi",
+    "baseUrl": "https://api.moonshot.cn/v1",
+    "model": "kimi-k2.5",
+    "docs": "https://platform.kimi.com/docs/api/overview"
+  },
+  {
+    "id": "glm",
+    "name": "智谱 / GLM",
+    "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
+    "model": "glm-5.2",
+    "docs": "https://docs.bigmodel.cn/cn/guide/develop/openai/introduction"
+  },
+  {
+    "id": "siliconflow",
+    "name": "硅基流动",
+    "baseUrl": "https://api.siliconflow.cn/v1",
+    "model": "deepseek-ai/DeepSeek-V4-Flash",
+    "docs": "https://docs.siliconflow.cn/docs/api/chat-completions-post"
+  },
+  {
+    "id": "openrouter",
+    "name": "OpenRouter",
+    "baseUrl": "https://openrouter.ai/api/v1",
+    "model": "openai/gpt-5.2",
+    "docs": "https://openrouter.ai/docs/quickstart"
+  },
+  {
+    "id": "volcengine",
+    "name": "火山方舟 / 豆包",
+    "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+    "model": "doubao-seed-2-1-pro-260628",
+    "docs": "https://docs.volcengine.com/docs/ark/compatible-with-openai-sdk?lang=en"
+  },
+  {
+    "id": "baidu",
+    "name": "百度千帆",
+    "baseUrl": "https://qianfan.baidubce.com/v2",
+    "model": "",
+    "docs": "https://cloud.baidu.com/doc/qianfan-docs/s/Fm9l6ocai"
+  },
+  {
+    "id": "tencent",
+    "name": "腾讯混元",
+    "baseUrl": "https://api.hunyuan.cloud.tencent.com/v1",
+    "model": "",
+    "docs": "https://cloud.tencent.com/document/product/1729/111007"
+  },
+  {
+    "id": "custom",
+    "name": "自定义 OpenAI 兼容接口",
+    "baseUrl": "",
+    "model": "",
+    "docs": "https://platform.openai.com/docs/api-reference/chat/create"
+  }
+]

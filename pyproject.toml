@@ -1,0 +1,20 @@
+[project]
+name = "product-detail-images"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = ["fastapi", "uvicorn", "httpx", "python-multipart", "Pillow"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pyink",
+    "pylint",
+    "httpx2>=2.13.1",
+]
+
+[tool.pyink]
+line-length = 80
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

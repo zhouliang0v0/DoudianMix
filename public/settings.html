@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型设置</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="settings-page">
+      <header class="settings-header">
+        <a href="index.html" aria-label="返回生成页面">←</a>
+        <h1>模型设置</h1>
+      </header>
+      <p class="settings-intro">
+        分别配置视觉理解与图片生成模型，填写自己的 API
+        Key（SK）。测试会真实发送测试图片，可能产生费用。
+      </p>
+      <section class="settings-panel">
+        <label class="settings-field">
+          模型用途
+          <select id="roleSelect">
+            <option value="vision">视觉理解（读取商品原图）</option>
+            <option value="image">图片生成（输出成品图）</option>
+          </select>
+        </label>
+        <label class="settings-field">
+          模型服务商
+          <select id="providerSelect"></select>
+        </label>
+        <label class="settings-field">
+          接口地址 Base URL
+          <input
+            id="baseUrl"
+            type="url"
+            autocomplete="off"
+            spellcheck="false">
+        </label>
+        <label class="settings-field">
+          模型名称
+          <input
+            id="modelName"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="填写平台控制台显示的模型 ID">
+        </label>
+        <div class="settings-field">
+          <label for="apiKey">API Key / SK</label>
+          <span class="key-row">
+            <!-- html-validate-disable-next autocomplete-password -- API credentials are transient; retain the existing browser autofill opt-out. -->
+            <input
+              id="apiKey"
+              type="password"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="填写此服务商的 SK">
+            <button id="toggleKey" type="button">显示</button>
+          </span>
+        </div>
+        <p class="settings-hint" id="keyHint">
+          密钥只保存在本机服务的运行内存中，服务重启后需重新填写。
+        </p>
+        <p class="settings-hint" id="capabilityHint"></p>
+        <div class="settings-buttons">
+          <button type="button" id="saveConfig">保存设置</button>
+          <button type="button" id="testConfig">测试连接</button>
+        </div>
+        <p
+          class="settings-result"
+          id="settingsResult"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </section>
+      <section class="provider-notes">
+        <h2>使用说明</h2>
+        <p>
+          视觉理解可选择 Claude 原生接口或 OpenAI
+          兼容接口，但需要模型实际支持图片输入。首版生图使用 OpenAI Images
+          Edits；其他预设不能作为生图模型。只有图片测试成功才会显示已验证。
+        </p>
+        <p>
+          SK
+          只存于本机服务内存，重启后需重填。连接测试和生成均可能产生服务商费用。
+        </p>
+        <a id="providerDocs" href="#" target="_blank" rel="noopener noreferrer">
+          查看当前服务商官方文档 ↗
+        </a>
+      </section>
+    </main>
+    <script type="module" src="settings.js"></script>
+  </body>
+</html>

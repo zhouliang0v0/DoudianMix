@@ -164,4 +164,3 @@ camelCase 字段、JSON 错误结构和毫秒时间戳。创建前需要至少�
 model、protocol，`imageProfile` 保存 provider、baseUrl、model。快照不含 SK
 或 `apiKey`，凭据仅保存在进程内存中。`create_app(enqueue=callback)` 在任务
 持久化后把任务 ID 交给回调；串行执行队列由后续迁移任务接入。
-
